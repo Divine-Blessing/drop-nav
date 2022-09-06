@@ -1,121 +1,79 @@
-// TO MAKE IT APPEAR ON CARD DATA-BINDING
-document.querySelector('.card-num').oninput = () =>{
-    document.querySelector('.place').innerText = document.querySelector('.card-num').value;
-}
+// the div containing the p and image
+const selectFeature = document.getElementById('feature');
+// the p class
+const selectText = document.getElementById('selectText');
+// the list classes
+const options = document.getElementsByClassName('firstFeat');
+// the ul ID
+const list = document.getElementById('firstList');
+// the images ID
+const arrow = document.getElementById('downArrow');
 
-document.querySelector('.card-name').oninput = () =>{
-    document.querySelector('.cardName').innerText = document.querySelector('.card-name').value;
-}
-
-document.querySelector('.month-year').oninput = () =>{
-    document.querySelector('.cardMonth').innerText = document.querySelector('.month-year').value;
-}
-
-document.querySelector('.year-month').oninput = () =>{
-    document.querySelector('.cardYear').innerText = document.querySelector('.year-month').value;
-}
-
-document.querySelector('.CVC').oninput = () =>{
-    document.querySelector('.cardCVC').innerText = document.querySelector('.CVC').value;
-}
-
-
-const submitButton = document.getElementById('submit');
-const secondButton = document.getElementById('continue');
-const formDiv = document.getElementById('formDiv');
-const ThanksCard = document.getElementById('ThanksCard');
-const cardName = document.getElementById('card-name');
-const cardNum = document.getElementById('card-num');
-const month = document.getElementById('month');
-const year = document.getElementById('year');
-const CVC = document.getElementById('CVC')
+// THE SECOND PART
+// the div containing the p and image
+const theCompany = document.getElementById('company');
+// the p class
+const pText = document.getElementsByClassName('textCompany');
+// the list class
+const thelist = document.getElementsByClassName('slist');
+// the ul's ID 
+const ulList = document.getElementById('secondList');
+// the images ID name
+const upArrow = document.getElementById('upArrow');
 
 
-formDiv.addEventListener('submit', submitForm)
-function submitForm(e){
-    e.preventDefault()
-    if (!cardName.value){
-        console.log('no value')
-        cardName.parentElement.classList.add('error')
-        return
-    }else{
-        cardName.parentElement.classList.remove('error')
+for(option of options){
+    option.onclick = function(){
+        selectText.innerHTML = this.textContent;
+        // note that the rotate class was defined in css
+        arrow.classList.toggle("rotate");
     }
-    if (!cardNum.value){
-        console.log('card number')
-        cardNum.parentElement.classList.add('error')
-        return
-    }else{
-        cardNum.parentElement.classList.remove('error')
-    }
-    if (month.value === 'month' || year.value === 'year'){
-        console.log('month')
-        month.parentElement.classList.add('error')
-        return
-    }else{
-        month.parentElement.classList.remove('error')
-    }
-    if (!CVC.value){
-        console.log('card number')
-        CVC.parentElement.classList.add('error')
-        return
-    }else{
-        CVC.parentElement.classList.remove('error')
-    }
-    formDiv.style.display="none";
-    ThanksCard.style.display="block"
 }
-// TO MAKE THE SECOND DIV DISPLAY
-secondButton.addEventListener('click', continueButton)
-function continueButton(){
-    formDiv.style.display="block"
-    ThanksCard.style.display="none"
+// to show the first option -- selectfeature is the div 
+// containing the p and image
+selectFeature.onclick = function(){
+    // to show the ul and rotate the arrow hide is the ul's class
+    list.classList.toggle("hide");
+    arrow.classList.toggle("rotate");
+}
+for(thelis of thelist){
+    thelis.onclick = function(){
+        pText.innerHTML = this.textContent;
+        // upArrow.classList.toggle("rotate");
+    }
+}
+// to show the second option
+theCompany.onclick = function(){
+    ulList.classList.toggle("show");
+    upArrow.classList.toggle("rotate");
 }
 
+// for the menu bar now
+// div containing the hamburger
+var botn = document.getElementsByClassName('toggle');
+console.log(botn); 
 
-// PERMITS ONLY INTEGERS
-function onlyNumbers(a){
-    var x = a.which || a.keycode;
-    if((x >= 48 && x <= 57))
-        return true;
-    else
-        return false;
-}
+// botn.addEventListener('click', majorList){
 
-//FOR THE ALERT WHEN DETAIL IS WRONG
-// const CardName = document.getElementById('card-name');
-// const CardNum = document.getElementsByClassName('card-num');
-// const CardCvc = document.getElementsByClassName('CVC');
-
-// form.addEventListener('Submit', e =>{
-//     e.preventDefault();
-
-//     validateInputs();
-// });
-
-
-// TO SHOW AND HIDE A DIV
-// function show(){
-//     document.getElementById("rightDiv").style.height="400px"
-    // document.getElementById('rightDiv').style.display="block"
-//     document.getElementById('rightDiv').style.display="none"
-//     document.getElementById('ThanksCard').style.display="flex"
 // }
 
-// function hide(){
-//     document.getElementById('ThanksCard').style.height="400px"
-//     document.getElementById('rightDiv').style.display="flex"
-//     document.getElementById('ThanksCard').style.display="none"
-// }
+const  theNavbar = document.querySelector('.theNavbar');
+const navToggle = document.querySelector('.navToggle');
+navToggle.addEventListener('click', () => {
+    const visibility = theNavbar.getAttribute('data-visible')
+    if (visibility === "false"){
+        theNavbar.setAttribute('data-visible', true)
+        navToggle.setAttribute('aria-expanded', true)
+    } else if (visibility === "true"){
+        theNavbar.setAttribute('data-visible', false)
+        navToggle.setAttribute('aria-expanded', false)
+    }
+})
 
-// TO MAKE SURE ITS STRING
-// function beString(){
 
-// }
-// var userName = document.getElementById('card-name');
-// var loginForm = document.getElementById('formDiv');
 
-// loginForm.addEventListener('submit', function(){
-//     console.log('Submit Button Clicked')
-// }
-// )
+
+
+
+
+
