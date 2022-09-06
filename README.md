@@ -18,5 +18,5 @@ Users should be able to:
 
 ### What I learned
 
-I learnt how to make the navbar rezponsive on mobile
+I learnt how to make the navbar responsive on mobile
 
